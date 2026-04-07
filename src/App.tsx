@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ThemeProvider } from "@/hooks/use-theme";
 import Auth from "./pages/Auth";
 import EmailVerification from "./pages/EmailVerification";
+import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import ChatTutor from "./pages/ChatTutor";
 import NotesSimplifier from "./pages/NotesSimplifier";
@@ -49,9 +50,9 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Landing />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/verify" element={<EmailVerification />} />
-            <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/chat" element={<ProtectedRoute><ChatTutor /></ProtectedRoute>} />
             <Route path="/notes" element={<ProtectedRoute><NotesSimplifier /></ProtectedRoute>} />
