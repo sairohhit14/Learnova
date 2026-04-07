@@ -96,10 +96,10 @@ const Landing = () => {
       <header className="fixed top-0 w-full z-50 backdrop-blur-lg bg-background/80 border-b border-border/50">
         <div className="container max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg">
-              <GraduationCap className="h-6 w-6 text-primary-foreground" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg">
+              <GraduationCap className="h-7 w-7 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold gradient-text">Learnova</span>
+            <span className="text-2xl font-bold gradient-text">Learnova</span>
           </div>
           <div className="flex items-center gap-4">
             <Button 
@@ -130,11 +130,15 @@ const Landing = () => {
               <span className="text-sm font-medium text-primary">AI-Powered Learning Platform</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="gradient-text">Learn Smarter,</span>
-              <br />
-              <span className="text-foreground">Not Harder</span>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight">
+              <span className="gradient-text">Learnova</span>
             </h1>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              <span className="text-foreground">Learn Smarter,</span>
+              <br />
+              <span className="text-muted-foreground">Not Harder</span>
+            </h2>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Transform your learning experience with AI-powered tools designed for modern students. 
@@ -254,11 +258,11 @@ const Landing = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border/50">
         <div className="container max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80">
-              <GraduationCap className="h-5 w-5 text-primary-foreground" />
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80">
+              <GraduationCap className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold gradient-text">Learnova</span>
+            <span className="text-2xl font-bold gradient-text">Learnova</span>
           </div>
           <p className="text-muted-foreground text-sm">
             © 2024 Learnova. Empowering students with AI-powered learning.
