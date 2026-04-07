@@ -20,24 +20,46 @@ const Auth = () => {
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        
+        // Check if email is verified
+        if (data.user && !data.user.email_confirmed_at) {
+          toast.error("Please verify your email before logging in. Check your inbox.");
+          await supabase.auth.signOut();
+          return;
+        }
+        
         toast.success("Welcome back!");
         navigate("/dashboard");
       } else {
-        const { error } = await supabase.auth.signUp({
+        // Validate username
+        if (username.trim().length < 3) {
+          toast.error("Username must be at least 3 characters long");
+          setLoading(false);
+          return;
+        }
+
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            data: { username },
-            emailRedirectTo: window.location.origin,
+            data: { username: username.trim() },
+            emailRedirectTo: `${window.location.origin}/auth`,
           },
         });
         if (error) throw error;
-        toast.success("Check your email to verify your account!");
+        toast.success("Account created! Please check your email to verify your account.");
       }
     } catch (error: any) {
-      toast.error(error.message);
+      console.error("Auth error:", error);
+      if (error.message?.includes("User already registered")) {
+        toast.error("This email is already registered. Try signing in instead.");
+      } else if (error.message?.includes("Invalid login credentials")) {
+        toast.error("Incorrect email or password. Please try again.");
+      } else {
+        toast.error(error.message || "Authentication failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
